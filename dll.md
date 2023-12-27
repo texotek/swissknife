@@ -103,5 +103,5 @@ extern "C" {
 }
 ```
 
-With the [__declspec](https://learn.microsoft.com/en-us/cpp/cpp/declspec?view=msvc-170) extension, you can specify storage-class information.
+With the [\_\_declspec](https://learn.microsoft.com/en-us/cpp/cpp/declspec?view=msvc-170) extension, you can specify storage-class information.
 With **dllexport** you can specify that you want to export this function.
