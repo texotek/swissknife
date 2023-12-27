@@ -47,10 +47,9 @@ function.
 You might prefer run-time linking when startup-performance is important to you or when an application branches to load diffrent modules
 as required.
 
-### 3.3 DLL Entry Point
-
+## 4. DLL Entry Point
 Dlls have a entry function called **DllMain()**.
-This function is called when processes or thread attach or detach themselves from the dll.
+This function is called when processes or threads attach or detach themselves from the dll.
 Here you can initialize or destroy data-structures as required.
 If you have multiple threads you can use Thread-Local Storage to allocate memory that is private to each thread.
 
@@ -58,7 +57,7 @@ If you have multiple threads you can use Thread-Local Storage to allocate memory
 BOOL APIENTRY DllMain(
     HMODULE hModule,    // Handle to the DLL Module
     DWORD Reason,       // Reason for the calling function
-    LPVOID Reserved     // Reserved
+
 ) {
     switch(Reason) {
         case DLL_PROCESS_ATTACHED: // A process is loading the DLL.
@@ -78,3 +77,33 @@ If the DLL Entry Point return **FALSE**, the application will not start when usi
 Run-time dynamic linking just fails to load the library when returning **FALSE**.
 
 The entry point should only perform simple initialization tasks. DON'T call any other DLL loading or termination functions.
+
+## 5. Export DLL functions
+
+### 5.1 Using the __declspec(dllexport)
+
+```cpp
+#include "randomDLL.h"
+
+#include <windows.h>
+
+BOOL APIENTRY DllMain(
+	HMODULE hModule,
+	DWORD Reason,
+	LPVOID Reserved
+) {
+	switch (Reason) {
+
+	}
+	return TRUE;
+}
+
+extern "C" {
+	__declspec(dllexport) void _cdecl hello() {
+		MessageBoxW(NULL, L"Hallo von der Massagebox", L"Sehr wichtige ansage", MB_OK);
+	}
+}
+```
+
+With the [\_\_declspec](https://learn.microsoft.com/en-us/cpp/cpp/declspec?view=msvc-170) extension you can specify storage-class information.
+With **dllexport** you can specify that you want to export this function.
