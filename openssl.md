@@ -28,7 +28,7 @@ openssl pkeyutl -encrypt -inkey public_key.pem -pubin -in file.txt -out file.txt
 openssl pkeyutl -decrypt -inkey private_key.pem -in file.txt.rsa -out file.txt
 ```
 
-## 2. AES Symmetric Encyption
+## 2. AES Symmetric Encryption
 
 [Advanced Encryption Standard](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 

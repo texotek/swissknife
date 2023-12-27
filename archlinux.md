@@ -3,8 +3,8 @@
 ##  1. Pre-Installation
 ### 1.1 Acquire an installation image 
 
-For installation of arch linux you will need first a iso image of arch.
-You will get it here at the [download](https://archlinux.org/download/) page.
+For installation of arch linux you will need first an iso image of Arch.
+You will get it here on the [download](https://archlinux.org/download/) page.
 
 **Important**: Verify the image you downloaded for corruption. For that download the gpg signature as well.
 
@@ -13,7 +13,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 ```
 
 ### 1.2 Installation Medium
-Use a usb flash drive or a optical disc.
+Use a USB flash drive or an optical disc.
 
 Writing the image on the medium:
 
@@ -60,19 +60,19 @@ If the system did not boot in the mode you desired (UEFI vs BIOS), refer to your
 - Mobile Broadband - Use **nmcli**
 
 ### 1.6 Partitioning the disks
-First find out what disk you want to use.
+First, find out what disk you want to use.
 
 ```bash
 fdisk -l
 ```
-Then after finding the disk partation it with:
+Then after finding the disk partition it with:
 
 ```bash
 fdisk /dev/disk_that_you_use
 ```
 TODO Append here how to partition with fdisk
 
-### 1.7 Fomatting the partitions
+### 1.7 Formatting the partitions
 To create an ext4 filesystem use mkfs.ext4.
 ```bash
 mkfs.ext4 /dev/sys_partation
@@ -93,7 +93,7 @@ To mount the system partition on /mnt
 mount /dev/sys_partation /mnt
 ```
 
-After that mount the efi partition
+After that mount the EFI partition
 ```bash
 mount --mkdir /dev/efi_partition /mnt/boot
 ```
@@ -120,8 +120,8 @@ pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub efiboo
 - base-devel - Basic development tools.
 - linux - Linux kernel, you could use linux-zen or linux-hardened as well. [List of options](https://wiki.archlinux.org/title/Kernel#Officially_supported_kernels)
 - linux-firmware - Basic firmware
-- networkmanager - NetworkManager deamon. You could use other [alternatives](https://wiki.archlinux.org/title/Network_configuration#Network_managers).
-- grub - GRand Unified Bootloader. Bootloader that I personally use.
+- networkmanager - NetworkManager daemon. You could use other [alternatives](https://wiki.archlinux.org/title/Network_configuration#Network_managers).
+- grub - GRand Unified Bootloader. Bootloader that I use.
 - efibootmgr - efibootmgr utility. I need that for grub and for managing my boot entries.
 - neovim - Neovim text editor
 - man-db - Man page database
@@ -205,4 +205,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ### 3.9 Reboot
 
-Reboot and enjoy your hopefully successfully installation
+Reboot and enjoy your hopefully successful installation
