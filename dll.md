@@ -86,20 +86,20 @@ The entry point should only perform simple initialization tasks. DON'T call any 
 #include <windows.h>
 
 BOOL APIENTRY DllMain(
-	HMODULE hModule,
-	DWORD Reason,
-	LPVOID Reserved
+    HMODULE hModule,
+    DWORD Reason,
+    LPVOID Reserved
 ) {
-	switch (Reason) {
+    switch (Reason) {
 
-	}
-	return TRUE;
+    }
+    return TRUE;
 }
 
 extern "C" {
-	__declspec(dllexport) void _cdecl hello() {
-		MessageBoxW(NULL, L"Hallo von der Massagebox", L"Sehr wichtige ansage", MB_OK);
-	}
+    __declspec(dllexport) void _cdecl hello() {
+        MessageBoxW(NULL, L"Hallo von der Massagebox", L"Sehr wichtige ansage", MB_OK);
+    }
 }
 ```
 
