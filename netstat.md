@@ -1,0 +1,3 @@
+# Netstat
+
+netstat -antp
