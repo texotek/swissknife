@@ -7,7 +7,7 @@ Open Source Intelligence Tools
 
 ## internet Scanning
 
-[Shodan](https://www.schodan.io)
+[Shodan](https://www.shodan.io)
 [Zoomeye](www.zoomeye.hk)
 [LeakIX](https://leakix.net/)
 
