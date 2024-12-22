@@ -15,7 +15,7 @@ nmap -Pn 10.0.0.1 # No Ping
 
 
 ## Full commands examples
-```bash
+```shell
 # Ping scan
 nmap -sP 192.168.0.0/24
 
@@ -39,7 +39,7 @@ nmap -v -Pn -n -T4 -sV --version-intensity=5 -sT -p T:ports_found --reason <IP>
 
 ## Target specification
 
-```bash
+```shell
 nmap 192.168.1.1
 nmap 192.168.1.1-10
 nmap 192.168.1.0/24
@@ -50,7 +50,7 @@ nmap -iL targets.txt
 
 ## Scan techniques
 
-```bash
+```shell
 # TCP SYN port scan (default, root needed)
 nmap -sS 192.168.1.1
 
@@ -70,7 +70,7 @@ nmap -sP 192.168.0.0/24
 ```
 
 ## Host discovery
-```bash
+```shell
 # No scan, only list targets (get hostnames)
 nmap -sL 192.168.1.1
 
@@ -85,7 +85,7 @@ nmap 192.168.1.1 -n
 ```
 ## Services, Ports and OS
 
-```bash
+```shell
 nmap -p 20 192.168.1.1
 nmap -p 20-100 192.168.1.1
 nmap -p U:53,T:25-100 192.168.1.1

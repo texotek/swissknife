@@ -2,7 +2,7 @@
 
 ## Initialization
  
-```bash
+```shell
 gpg --full-generate-key # Create GPP key
 pass init <keyname> # Create Password store
 ```

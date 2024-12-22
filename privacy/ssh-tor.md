@@ -17,25 +17,25 @@ In addition, make sure you use email that doesn’t require much information abo
 If you use Tor, enter recovery mode or web shell on the VPS provider’s website.
 Install Tor and configure SSH via Tor:
 
-```bash
+```shell
 sudo apt install tor
 ```
 
 Enable Tor startup when booting:
 
-```bash
+```shell
 sudo systemctl enable tor
 ```
 
 And run Tor after installation:
 
-```bash
+```shell
 sudo systemctl start tor
 ```
 
 Open the Tor Torrc file using the following command:
 
-```bash
+```shell
 sudo vi /etc/tor/torrc
 ```
 
@@ -48,7 +48,7 @@ HiddenServicePort 22 127.0.0.1:22
 
 Save the file and restart your SSH:
 
-```bash
+```shell
 sudo systemctl restart ssh
 ```
 
@@ -56,19 +56,19 @@ sudo systemctl restart ssh
 
 Get the .onion address:
 
-```bash
+```shell
 sudo cat /var/lib/tor/ssh/hostname
 foobarvkiwibfiwucd6vxijskbhpjdyajmzeor4mc4i7yopvpo4p7cyd.onion
 ```
 
 Connect to the hidden service:
 
-```bash
+```shell
 ssh -o ProxyCommand="ncat --proxy-type socks5 --proxy 127.0.0.1:9050 %h %p" sshuser@foobarvkiwibfiwucd6vxijskbhpjdyajmzeor4mc4i7yopvpo4p7cyd.onion
 ```
 
 Or just use torsocks:
 
-```bash
+```shell
 torsocks ssh sshuser@foobarvkiwibfiwucd6vxijskbhpjdyajmzeor4mc4i7yopvpo4p7cyd.onion
 ```

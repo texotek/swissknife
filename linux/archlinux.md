@@ -8,7 +8,7 @@ You will get it here on the [download](https://archlinux.org/download/) page.
 
 **Important**: Verify the image you downloaded for corruption. For that download the gpg signature as well.
 
-```bash
+```shell
 gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
 ```
 
@@ -17,7 +17,7 @@ Use a USB flash drive or an optical disc.
 
 Writing the image on the medium:
 
-```bash
+```shell
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/disk/by-id/usb-My_flash_drive conv=fsync oflag=direct status=progress
 ```
 
@@ -28,13 +28,13 @@ Be sure to explicitly boot into the USB/Optical Drive and disable *Secure Boot*,
 
 **Note:**
 If your device is beeping like crazy when using tab completion or using backspace, unload the pcspkr kernel module.
-```bash
+```shell
 rmmod pcspkr
 ```
 
 ### 1.4 Verifying the boot mode
 
-```bash
+```shell
 cat /sys/firmware/efi/fw_platform_size
 ```
 
@@ -49,7 +49,7 @@ If the system did not boot in the mode you desired (UEFI vs BIOS), refer to your
 
 - Ethernet - Just plug in the cable, the live installation should just do everything
 - Wireless - Use **iwtctl** 
-    ```bash
+    ```shell
     device list
     device <device> set-property Powered on
     adapter <adapter> set-property Powered on
@@ -62,44 +62,44 @@ If the system did not boot in the mode you desired (UEFI vs BIOS), refer to your
 ### 1.6 Partitioning the disks
 First, find out what disk you want to use.
 
-```bash
+```shell
 fdisk -l
 ```
 Then after finding the disk partition it with:
 
-```bash
+```shell
 fdisk /dev/disk_that_you_use
 ```
 TODO Append here how to partition with fdisk
 
 ### 1.7 Formatting the partitions
 To create an ext4 filesystem use mkfs.ext4.
-```bash
+```shell
 mkfs.ext4 /dev/sys_partation
 ```
 If you use a swap partition:
-```bash
+```shell
 mkswap /dev/swap_partition
 ```
 To format the EFI System Partition:
-```bash
+```shell
 mkfs.fat -F 32 /dev/efi_partition
 ```
 
 ### 1.8 Mounting the partitions
 
 To mount the system partition on /mnt
-```bash
+```shell
 mount /dev/sys_partation /mnt
 ```
 
 After that mount the EFI partition
-```bash
+```shell
 mount --mkdir /dev/efi_partition /mnt/boot
 ```
 
 After that activating the swap partition
-```bash
+```shell
 swapon /dev/swap_partition
 ```
 
@@ -107,12 +107,12 @@ swapon /dev/swap_partition
 
 ### 2.1 Mirror list
 Maybe you want to update the mirror list with **reflector**.
-```bash
+```shell
 reflector
 ```
 
 ### 2.2 Installation of essential packages
-```bash
+```shell
 pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub efibootmgr neovim man-db
 ```
 
@@ -130,7 +130,7 @@ pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub efiboo
 ### 3.1 fstab
 
 For the system to mount the disks automatically on boot:
-```bash
+```shell
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 Check the result with `cat /mnt/etc/fstab`.
@@ -138,17 +138,17 @@ Check the result with `cat /mnt/etc/fstab`.
 ### 3.2 Chroot
 
 Chroot in the system.
-```bash
+```shell
 arch-chroot /mnt
 ```
 ### 3.3 Time
 
 Setting the time zone:
-```bash
+```shell
 ln -s /usr/share/zoneinfo/<REGION>/<CITY> /etc/localtime
 ```
 Run hwclock to generate /etc/adjtime
-```bash
+```shell
 hwclock --systohc
 ```
 
@@ -156,7 +156,7 @@ hwclock --systohc
 
 Edit the `/etc/locale.gen` and uncomment the locales you want to have.
 Then run:
-```bash
+```shell
 locale-gen
 ```
 
@@ -179,7 +179,7 @@ examplehostname
 ### 3.6 Root Password
 
 Set the root password with passwd:
-```bash
+```shell
 passwd
 ```
 
@@ -194,12 +194,12 @@ pacman -S intel-ucode # intel cpu
 ```
 
 Installing grub to EFI partition:
-```bash
+```shell
 grub-install --target=x86_64-efi --efi-directory=<efi_directory> --bootloader-id=grub
 ```
 
 Generating config:
-```bash
+```shell
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 

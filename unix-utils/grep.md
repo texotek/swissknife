@@ -6,25 +6,28 @@ The grep command searches for patterns in each file.
 ## Patterns
 Grep patterns can be defined by these arguments:
 
-```bash
+```shell
 grep -E # Interpret PATTERNS as extended regular expressions
 grep -G # Interpret PATTERS as basic regular expression
 
 ```
 ## Search options
 
-```bash
-grep -R # For recursive search
+```shell
+grep -R -r # For recursive search
+grep -v # Exclusive Search
 ```
 
+
 ## Display options
-```bash
+```shell
 grep -n # Show Numbering 
 ```
 
 ## Cheatsheet
 Basic usage examples
-```bash
+
+```shell
 grep -nRG # 
 grep -v "firefox" # Exclude from grep search
 ```

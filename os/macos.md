@@ -36,14 +36,14 @@ responsible for the behavior and built-in apps in macOS.
 When beeing in Finder, press the **CMD** + **Shift** + **.** Key Combinatin.
 
 or write it in the defaults:
-```bash
+```shell
 defaults write com.apple.Finder AppleShowAllFiles true
 killall Finder
 ```
 
 ### 3.2 Prevent Workspace switching after quitting app
 
-```bash
+```shell
 defaults write com.apple.dock workspaces-auto-swoosh -bool NO
 killall Dock
 ```

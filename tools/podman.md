@@ -6,13 +6,13 @@ It works almost the same as docker, only the architecture backend changes.
 
 ## Installation
 
-```bash
+```shell
 apt install podamn
 ```
 
 Optionally you can set a alias that links to docker
 
-```bash
+```shell
 alias docker='podman`
 ```
 

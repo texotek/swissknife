@@ -50,7 +50,7 @@ How does ffuf work.
 
 #### Directory Fuzzing
 
-```bash
+```shell
 ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://IP:PORT/FUZZ
 ```
 
@@ -59,7 +59,7 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt 
 
 #### File Fuzzing
 
-```bash
+```shell
 ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://IP:PORT/w2ksvrus/FUZZ.html -e .php,.html,.txt,.bak,.js -v 
 ```
 
@@ -76,7 +76,7 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt 
 ```
 
 #### Examples
-```bash
+```shell
 ffuf -fc 403 # filter out code 403
 ffuf -ic # ignore Comments in wordlist
 ```
