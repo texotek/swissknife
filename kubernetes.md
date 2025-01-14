@@ -65,7 +65,7 @@ kubectl get pods -l version=v1
 
 To delete a service, you can use labels as well.
 
-```
+```shell
 kubectl delete service -l app=kubernetes-bootcamp
 ```
 
@@ -94,17 +94,17 @@ Kubernets allows rolling updates, you can update your service with zero downtime
 It does incrementally replace the current pods with new ones.
 
 This command replaces the deployment of the application to version 2.
-```
+```shell
 kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=docker.io/jocatalin/kubernetes-bootcamp:v2
 ```
 
 Check the status of the rollout with this:
-```
+```shell
 kubectl rollout status deployments/kubernetes-bootcamp
 kubectl describe pods
 ```
 
 To rollback the deployment to the last version:
-```
+```shell
 kubectl rollout undo deployments/kubernetes-bootcamp
 ```
