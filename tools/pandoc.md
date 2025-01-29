@@ -21,3 +21,11 @@ In the below case, I'm specifically claiming the README.md is in Github-Flavored
 ```console
 pandoc --from=gfm --to=pdf -o README.pdf README.md
 ```
+
+### Attributes
+
+```bash
+pandoc /
+-f markdown-implicit_figures /
+-V geometry:margin=1in /
+```
